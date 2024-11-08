@@ -1,21 +1,28 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:smart_campus_mobile_app/screen/chat_screen.dart';
+import 'package:smart_campus_mobile_app/screen/contact_page.dart';
+import 'package:smart_campus_mobile_app/screen/home_page.dart';
 import 'firebase_options.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  // await FirebaseApi().initNotification();
-  // FirebaseFirestore.instance.settings = const Settings(
-  //   persistenceEnabled: true,
-  // );
-  runApp(MultiProvider(
-    providers: [ChangeNotifierProvider(create: (_) => EventButtonProvider())],
-    child: Demo(),
-  ));
+// Siss Hmue main method
+// void main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+//   await FirebaseApi().initNotification();
+//   FirebaseFirestore.instance.settings = const Settings(
+//     persistenceEnabled: true,
+//   );
+//   runApp(MultiProvider(
+//     providers: [ChangeNotifierProvider(create: (_) => EventButtonProvider())],
+//     child: Demo(),
+//   ));
+// }
+void main() {
+  runApp(Demo());
 }
 
 class Demo extends StatefulWidget {
@@ -28,7 +35,11 @@ class Demo extends StatefulWidget {
 class _DemoState extends State<Demo> {
   int selectedIndex = 0;
 
-  final List<Widget> page = [const HomePage(), ChatScreen(), const Contact()];
+  final List<Widget> page = [
+    const HomePage(),
+    ChatScreen(),
+    const ContactPage()
+  ];
 
   void _ontabChange(int index) {
     setState(() {
