@@ -1,13 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:provider/provider.dart';
+import 'package:smart_campus_mobile_app/provider/event_button_provider.dart';
 import 'package:smart_campus_mobile_app/screen/auth_screen.dart';
-import 'package:smart_campus_mobile_app/screen/chat_page.dart';
-import 'package:smart_campus_mobile_app/screen/contact_page.dart';
-import 'package:smart_campus_mobile_app/screen/home_page.dart';
+import 'package:smart_campus_mobile_app/screen/events_home_page.dart';
+import 'components/flutter_api.dart';
 import 'firebase_options.dart';
 
-//final navigatorKey = GlobalKey<NavigatorState>();
+final navigatorKey = GlobalKey<NavigatorState>();
 
 // Siss Hmue main method
 // void main() async {
@@ -25,79 +26,29 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await FirebaseApi().initNotification();
+  FirebaseFirestore.instance.settings = const Settings(
+    persistenceEnabled: true,
   );
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: AuthPage(),
+  runApp(MultiProvider(
+    providers: [ChangeNotifierProvider(create: (_) => EventButtonProvider())],
+    child: MyApp(),
   ));
 }
 
-//I added this widget in navigation_screen.dart
-//Siss Hmue Demo
-// class Demo extends StatefulWidget {
-//   const Demo({super.key});
-//
-//   @override
-//   State<Demo> createState() => _DemoState();
-// }
-//
-// class _DemoState extends State<Demo> {
-//   int selectedIndex = 0;
-//
-//   final List<Widget> page = [
-//     const HomePage(),
-//     ChatScreen(),
-//     const ContactPage()
-//   ];
-//
-//   void _ontabChange(int index) {
-//     setState(() {
-//       selectedIndex = index;
-//     });
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       // home: HomePage(),
-//       home: Scaffold(
-//         bottomNavigationBar: Container(
-//           color: const Color(0xFFD9D9D9),
-//           child: Padding(
-//             padding: const EdgeInsets.symmetric(
-//               vertical: 20.0,
-//               horizontal: 15,
-//             ),
-//             child: GNav(
-//               backgroundColor: Color(0xffD9D9D9),
-//               activeColor: Colors.white,
-//               color: Colors.black,
-//               tabBackgroundColor: Colors.grey.shade800,
-//               padding: EdgeInsets.all(16),
-//               onTabChange: _ontabChange,
-//               gap: 8,
-//               tabs: const [
-//                 GButton(
-//                   icon: Icons.home,
-//                   text: "Home",
-//                 ),
-//                 GButton(
-//                   icon: Icons.smart_toy_outlined,
-//                   text: "Bot",
-//                 ),
-//                 GButton(
-//                   icon: Icons.account_circle_rounded,
-//                   text: "Contact",
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ),
-//         body: page[selectedIndex],
-//       ),
-//     );
-//   }
-// }
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: AuthPage(),
+      navigatorKey: navigatorKey,
+      routes: {
+        '/EventsScreen': (context) => EventsHomePage(),
+      },
+    );
+  }
+}
