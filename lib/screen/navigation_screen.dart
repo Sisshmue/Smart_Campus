@@ -1,24 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'chat_screen.dart';
+import 'chat_page.dart';
 import 'contact_page.dart';
 import 'home_page.dart';
 
-class Demo extends StatefulWidget {
-  const Demo({super.key});
+class NavigationPage extends StatefulWidget {
+  const NavigationPage({super.key});
 
   @override
-  State<Demo> createState() => _DemoState();
+  State<NavigationPage> createState() => _NavigationPageState();
 }
 
-class _DemoState extends State<Demo> {
+class _NavigationPageState extends State<NavigationPage> {
   int selectedIndex = 0;
 
   final List<Widget> page = [
     HomePage(),
-    const ChatScreen(),
-    const ContactPage()
+    ChatPage(),
+    ContactPage(),
   ];
 
   void _ontabChange(int index) {

@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                         context,
                         MaterialPageRoute(
                           builder: (context) {
-                            return Demo();
+                            return NavigationPage();
                           },
                         ),
                       );
@@ -105,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Demo(),
+                            builder: (context) => NavigationPage(),
                           ),
                         );
                       } else {

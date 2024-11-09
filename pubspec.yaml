@@ -38,9 +38,13 @@ dependencies:
   firebase_core: ^3.4.0
   cloud_firestore: ^5.4.0
   google_nav_bar: ^5.0.7
-  firebase_auth: ^5.2.0
+  firebase_auth: ^5.3.2
   google_sign_in: ^6.2.2
   google_fonts: ^6.2.1
+  http: ^1.2.2
+  table_calendar: ^3.1.2
+  provider: ^6.1.2
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_test:

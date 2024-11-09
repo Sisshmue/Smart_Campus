@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_campus_mobile_app/services/auth_service.dart';
-import 'events_page.dart';
+import 'events_home_page.dart';
 
 import 'calendar_page.dart';
 
@@ -98,7 +98,7 @@ class HomePage extends StatelessWidget {
                       context,
                       PageRouteBuilder(
                         pageBuilder: (context, animation, secondaryAnimation) =>
-                            const Events(),
+                            EventsHomePage(),
                         transitionsBuilder:
                             (context, animation, secondaryAnimation, child) {
                           const begin = Offset(0.1, 0.0); // Start from the left
@@ -136,7 +136,7 @@ class HomePage extends StatelessWidget {
                       context,
                       PageRouteBuilder(
                         pageBuilder: (context, animation, secondaryAnimation) =>
-                            const Events(),
+                            const EventsHomePage(),
                         transitionsBuilder:
                             (context, animation, secondaryAnimation, child) {
                           const begin = Offset(0.1, 0.0); // Start from the left

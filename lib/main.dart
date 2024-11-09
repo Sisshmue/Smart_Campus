@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:smart_campus_mobile_app/screen/auth_screen.dart';
-import 'package:smart_campus_mobile_app/screen/chat_screen.dart';
+import 'package:smart_campus_mobile_app/screen/chat_page.dart';
 import 'package:smart_campus_mobile_app/screen/contact_page.dart';
 import 'package:smart_campus_mobile_app/screen/home_page.dart';
 import 'firebase_options.dart';
