@@ -16,7 +16,7 @@ class _DemoState extends State<Demo> {
   int selectedIndex = 0;
 
   final List<Widget> page = [
-    const HomePage(),
+    HomePage(),
     const ChatScreen(),
     const ContactPage()
   ];
