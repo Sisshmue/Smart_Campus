@@ -95,46 +95,48 @@ class _EventsHomePageState extends State<EventsHomePage> {
           Column(
             children: [
               Container(
-                height: 41,
                 width: 235,
-                margin: EdgeInsets.all(8.0),
-                child: Card(
-                  color: Color(0xFFD9D9D9),
-                  child: TextField(
-                    controller: _searchController,
-                    decoration: InputDecoration(
-                      prefixIcon: IconButton(
-                        icon: Icon(
-                          // searchQuery.isEmpty &&
-                          isSearching ? Icons.clear : Icons.search,
-                        ),
-                        onPressed: () {
-                          if (isSearching) {
-                            FocusScope.of(context).unfocus();
-                            // Clear the search query and reset search state
-                            _searchController.clear();
-                            setState(() {
-                              searchQuery = ""; // Clear search query
-                              isSearching = false; // Switch back to search icon
-                            });
-                          }
-                        },
+                height: 45,
+                decoration: BoxDecoration(
+                    color: Color(0xFFD9D9D9),
+                    borderRadius: BorderRadius.circular(30)),
+                child: TextField(
+                  controller: _searchController,
+                  decoration: InputDecoration(
+                    prefixIcon: IconButton(
+                      icon: Icon(
+                        // searchQuery.isEmpty &&
+                        isSearching ? Icons.clear : Icons.search,
                       ),
-                      border: InputBorder.none,
+                      onPressed: () {
+                        if (isSearching) {
+                          FocusScope.of(context).unfocus();
+                          // Clear the search query and reset search state
+                          _searchController.clear();
+                          setState(() {
+                            searchQuery = ""; // Clear search query
+                            isSearching = false; // Switch back to search icon
+                          });
+                        }
+                      },
                     ),
-                    onTap: () {
-                      setState(() {
-                        isSearching = true; // Activate search mode
-                      });
-                    },
-                    onChanged: (val) {
-                      setState(() {
-                        searchQuery = val; // Update the search query
-                      });
-                    },
+                    border: InputBorder.none,
                   ),
+                  onTap: () {
+                    setState(() {
+                      isSearching = true; // Activate search mode
+                    });
+                  },
+                  onChanged: (val) {
+                    setState(() {
+                      searchQuery = val; // Update the search query
+                    });
+                  },
                 ),
               ),
+              const SizedBox(
+                height: 10,
+              )
             ],
           ),
 
