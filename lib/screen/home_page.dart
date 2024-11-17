@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_campus_mobile_app/screen/doc_req_home_screen.dart';
 import 'package:smart_campus_mobile_app/services/auth_service.dart';
 import 'events_home_page.dart';
 
@@ -50,6 +51,7 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // this is for map
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -87,6 +89,8 @@ class HomePage extends StatelessWidget {
                 const SizedBox(
                   width: 35,
                 ),
+
+                //this is for news
                 GestureDetector(
                   child: SizedBox(
                     width: 160,
@@ -125,6 +129,7 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // this is for document request
                 GestureDetector(
                   child: SizedBox(
                     width: 160,
@@ -136,7 +141,7 @@ class HomePage extends StatelessWidget {
                       context,
                       PageRouteBuilder(
                         pageBuilder: (context, animation, secondaryAnimation) =>
-                            const EventsHomePage(),
+                            DocReqHomePage(),
                         transitionsBuilder:
                             (context, animation, secondaryAnimation, child) {
                           const begin = Offset(0.1, 0.0); // Start from the left
@@ -161,6 +166,9 @@ class HomePage extends StatelessWidget {
                 const SizedBox(
                   width: 35,
                 ),
+
+                // this is for class schedule
+
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
