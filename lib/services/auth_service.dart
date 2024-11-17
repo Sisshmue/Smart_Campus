@@ -22,6 +22,20 @@ class AuthService {
     }
   }
 
+  Future<String?> getCurrentUserName() async {
+    try {
+      final user = _firebaseAuth.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+        final username = loggedInUser!.displayName;
+        return username!;
+      }
+    } catch (e) {
+      print(e);
+    }
+    return null;
+  }
+
   // sign out
   Future<void> signOut() async {
     return await _firebaseAuth.signOut();

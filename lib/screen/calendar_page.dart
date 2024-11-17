@@ -27,14 +27,14 @@ class _CalendarPageState extends State<CalendarPage> {
   }
 
   Future<void> _fetchStudentCourses() async {
+    final name = await _authService.getCurrentUserName();
     final response = await http.get(Uri.parse(
         'https://campus-backend-sqdp.onrender.com/api/students/?populate[courses][populate]=schedules'));
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body)['data'];
       setState(() {
-        _events = _mapCoursesToCalendar(
-            data, "HAN MIN THAW -"); // Pass student_id = 10
+        _events = _mapCoursesToCalendar(data, name!); // Pass student_id = 10
       });
     } else {
       throw Exception('Failed to load courses');
