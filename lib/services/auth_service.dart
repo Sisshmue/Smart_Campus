@@ -36,6 +36,20 @@ class AuthService {
     return null;
   }
 
+  Future<String?> getCurrentUserImg() async {
+    try {
+      final user = _firebaseAuth.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+        final userImg = loggedInUser!.photoURL;
+        return userImg!;
+      }
+    } catch (e) {
+      print(e);
+    }
+    return null;
+  }
+
   // sign out
   Future<void> signOut() async {
     return await _firebaseAuth.signOut();

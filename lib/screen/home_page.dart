@@ -1,21 +1,77 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_campus_mobile_app/screen/doc_req_home_screen.dart';
 import 'package:smart_campus_mobile_app/services/auth_service.dart';
 import 'events_home_page.dart';
-
+import 'package:http/http.dart' as http;
 import 'calendar_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _fetchStudentData();
+  }
+
   final _authService = AuthService();
+  String? name;
+  String? stu_id;
+
+  Future<void> _fetchStudentData() async {
+    // Simulate getting the current user's name
+    name =
+        await _authService.getCurrentUserName(); // Replace with actual service
+    final response = await http.get(Uri.parse(
+        'https://campus-backend-sqdp.onrender.com/api/students/?populate[courses][populate]=schedules'));
+
+    if (response.statusCode == 200) {
+      final responseData = json.decode(response.body);
+      if (responseData['data'] is List) {
+        // If `data` is a list, search for the matching name
+        for (var student in responseData['data']) {
+          if (student['name'] == name) {
+            setState(() {
+              stu_id = student['student_id'];
+            });
+            return; // Exit once the student is found
+          }
+        }
+        print("No matching student found.");
+      } else {
+        print("Unexpected data format.");
+      }
+    } else {
+      throw Exception('Failed to load students');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        leading: Builder(
+          builder: (context) => Padding(
+            padding: const EdgeInsets.only(left: 30.0),
+            child: IconButton(
+              icon: Icon(Icons.menu), // Use a custom icon or modify its style
+              onPressed: () {
+                Scaffold.of(context)
+                    .openDrawer(); // Open the drawer when the icon is tapped
+              },
+              tooltip: 'Open Navigation Drawer',
+            ),
+          ),
+        ),
       ),
       drawer: Drawer(
         child: SafeArea(
@@ -38,14 +94,48 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 40),
-              child: Text(
-                "Let's explore \nsomething new",
-                style: GoogleFonts.inter(
-                    textStyle: const TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.normal,
-                )),
+              padding: const EdgeInsets.only(left: 30),
+              child: Row(
+                children: [
+                  FutureBuilder<String?>(
+                    future: _authService
+                        .getCurrentUserImg(), // Assuming this returns Future<String>
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        // Show a loading indicator while waiting for the image URL
+                        return const CircleAvatar(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else if (snapshot.hasError) {
+                        // Handle error state
+                        return const CircleAvatar(
+                          child: Icon(Icons.error),
+                        );
+                      } else if (snapshot.hasData) {
+                        // Display the image once the URL is retrieved
+                        return CircleAvatar(
+                          radius: 30,
+                          backgroundImage: NetworkImage(snapshot.data!),
+                        );
+                      } else {
+                        // Handle cases where no data is available
+                        return const CircleAvatar(
+                          child: Icon(Icons.person),
+                        );
+                      }
+                    },
+                  ),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(name ?? 'Loading'),
+                      Text(stu_id ?? 'Loading...'),
+                    ],
+                  )
+                ],
               ),
             ),
             Row(
