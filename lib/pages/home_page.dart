@@ -2,7 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_campus_mobile_app/screen/doc_req_home_screen.dart';
+import 'package:smart_campus_mobile_app/pages/doc_req_home_page.dart';
+import 'package:smart_campus_mobile_app/pages/map_page.dart';
 import 'package:smart_campus_mobile_app/services/auth_service.dart';
 import 'events_home_page.dart';
 import 'package:http/http.dart' as http;
@@ -148,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                       context,
                       PageRouteBuilder(
                         pageBuilder: (context, animation, secondaryAnimation) =>
-                            const CalendarPage(),
+                            const MapPage(),
                         transitionsBuilder:
                             (context, animation, secondaryAnimation, child) {
                           const begin =

@@ -3,8 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_campus_mobile_app/provider/event_button_provider.dart';
-import 'package:smart_campus_mobile_app/screen/auth_screen.dart';
-import 'package:smart_campus_mobile_app/screen/events_home_page.dart';
+import 'package:smart_campus_mobile_app/pages/auth_page.dart';
+import 'package:smart_campus_mobile_app/pages/events_home_page.dart';
 import 'components/flutter_api.dart';
 import 'firebase_options.dart';
 

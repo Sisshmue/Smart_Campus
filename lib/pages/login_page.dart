@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_campus_mobile_app/screen/home_page.dart';
-import 'package:smart_campus_mobile_app/screen/navigation_screen.dart';
+import 'package:smart_campus_mobile_app/pages/home_page.dart';
+import 'package:smart_campus_mobile_app/pages/navigation_page.dart';
 import '../components/google_signup_button.dart';
 import '../components/login_button.dart';
 import '../components/text_area.dart';

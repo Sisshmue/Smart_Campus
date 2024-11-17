@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../components/document_button.dart';
-import 'custom_dialog.dart';
+import 'custom_dialog_page.dart';
 import 'document_guide_page.dart';
 import 'history_page.dart';
 

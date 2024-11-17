@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+const Google_Maps_API_Key = "AIzaSyCL0yYOnRI0L_Aobqv4eaP7eK2NbQZi5cY";
 final kTextFieldTextStyle = TextStyle(
   color: Colors.grey.shade500,
   fontSize: 20,
