@@ -79,6 +79,14 @@ class _HomePageState extends State<HomePage> {
           child: ListView(
             children: [
               ListTile(
+                leading: Icon(Icons.person_rounded),
+                title: Text('Biography'),
+                onTap: () {
+                  _authService.signOut();
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.logout),
                 title: Text('Log out'),
                 onTap: () {
                   _authService.signOut();
