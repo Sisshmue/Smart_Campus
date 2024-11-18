@@ -10,20 +10,6 @@ import 'firebase_options.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
-// Siss Hmue main method
-// void main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-//   await FirebaseApi().initNotification();
-//   FirebaseFirestore.instance.settings = const Settings(
-//     persistenceEnabled: true,
-//   );
-//   runApp(MultiProvider(
-//     providers: [ChangeNotifierProvider(create: (_) => EventButtonProvider())],
-//     child: Demo(),
-//   ));
-// }
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);

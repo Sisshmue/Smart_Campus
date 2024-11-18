@@ -93,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 GoogleSingUpButton(
                   img: 'images/google.png',
-                  buttonName: 'Sing Up with Google',
+                  buttonName: 'Sign Up with Google',
                   onClick: () async {
                     try {
                       // Attempt to sign in with Google
