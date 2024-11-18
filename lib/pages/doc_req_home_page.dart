@@ -27,7 +27,15 @@ class _DocReqHomePageState extends State<DocReqHomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Document Request Page'),
+        title: Text(
+          'Document Request Page',
+          style: TextStyle(color: Colors.white),
+        ),
+        centerTitle: true,
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+        ),
+        backgroundColor: const Color(0xFF272EBC),
       ),
       body: SafeArea(
         child: Column(

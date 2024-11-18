@@ -77,7 +77,15 @@ class _MapPageState extends State<MapPage> {
         child: Icon(Icons.my_location),
       ),
       appBar: AppBar(
-        title: Text('Map Guide'),
+        title: Text(
+          'Map Guide',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        centerTitle: true,
+        iconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: const Color(0xFF67ab50),
       ),
       body: Column(
         children: [

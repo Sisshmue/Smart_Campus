@@ -1,7 +1,7 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_campus_mobile_app/pages/biography_page.dart';
 import 'package:smart_campus_mobile_app/pages/doc_req_home_page.dart';
 import 'package:smart_campus_mobile_app/pages/map_page.dart';
 import 'package:smart_campus_mobile_app/services/auth_service.dart';
@@ -60,6 +60,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color(0xffD9D9D9),
         leading: Builder(
           builder: (context) => Padding(
             padding: const EdgeInsets.only(left: 30.0),
@@ -75,14 +76,23 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       drawer: Drawer(
+        backgroundColor: Colors.white,
         child: SafeArea(
           child: ListView(
             children: [
+              SizedBox(
+                height: 30,
+              ),
               ListTile(
                 leading: Icon(Icons.person_rounded),
                 title: Text('Biography'),
                 onTap: () {
-                  _authService.signOut();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BiographyPage(),
+                    ),
+                  );
                 },
               ),
               ListTile(
