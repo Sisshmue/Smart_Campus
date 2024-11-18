@@ -150,8 +150,22 @@ class _HomePageState extends State<HomePage> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(name ?? 'Loading'),
-                      Text(stu_id ?? 'Loading...'),
+                      Text(
+                        name ?? 'Loading',
+                        style: GoogleFonts.inter(
+                            letterSpacing: 3,
+                            color: Colors.grey.shade700,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        stu_id ?? 'Loading...',
+                        style: GoogleFonts.inter(
+                            letterSpacing: 2,
+                            color: Colors.grey.shade700,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18),
+                      ),
                     ],
                   )
                 ],
