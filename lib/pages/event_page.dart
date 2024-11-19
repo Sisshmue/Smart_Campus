@@ -36,7 +36,7 @@ class _EventState extends State<Event> {
       appBar: AppBar(
         title: Text(
           "Events and News",
-          style: GoogleFonts.openSans(
+          style: GoogleFonts.inter(
             textStyle: const TextStyle(
               color: Colors.white,
               fontSize: 20,
@@ -46,7 +46,7 @@ class _EventState extends State<Event> {
         ),
         centerTitle: true,
         automaticallyImplyLeading: true,
-        backgroundColor: const Color(0xFF7A060D),
+        backgroundColor: const Color(0xFF6597E1),
         iconTheme: const IconThemeData(
           color: Colors.white,
         ),
