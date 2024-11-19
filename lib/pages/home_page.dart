@@ -8,6 +8,7 @@ import 'package:smart_campus_mobile_app/services/auth_service.dart';
 import 'events_home_page.dart';
 import 'package:http/http.dart' as http;
 import 'calendar_page.dart';
+import 'login_page.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
